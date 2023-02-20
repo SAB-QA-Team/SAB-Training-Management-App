@@ -6,6 +6,13 @@ from django.urls import reverse_lazy
 #To deal with login and signup
 from django.contrib.auth.views import LoginView
 
+from django.http import HttpResponse
+
+def login(request):
+    return HttpResponse('Login Page')
+
+def registeration(request):
+    return HttpResponse('Registration Page')
 
 #from .model import Course #When database is implemented
 
