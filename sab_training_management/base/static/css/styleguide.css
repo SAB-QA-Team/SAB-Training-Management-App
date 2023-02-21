@@ -1,0 +1,32 @@
+:root { 
+  --black: #000000;
+  --claret: #8a1538;
+  --donkey-brown: #a29475;
+  --mystic: #e9e9f1;
+  --santas-gray: #a3a3ae;
+  --white: #ffffff;
+ 
+  --font-size-m: 28px;
+  --font-size-s: 20px;
+  --font-size-xs: 16px;
+ 
+  --font-family-cairo: "Cairo", Helvetica;
+  --font-family-cairo-extrabold: "Cairo-ExtraBold", Helvetica;
+  --font-family-cairo-medium: "Cairo-Medium", Helvetica;
+  --font-family-poppins: "Poppins", Helvetica;
+}
+.poppins-normal-santas-gray-16px {
+  color: var(--santas-gray);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.cairo-semi-bold-donkey-brown-28px {
+  color: var(--donkey-brown);
+  font-family: var(--font-family-cairo);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 600;
+}

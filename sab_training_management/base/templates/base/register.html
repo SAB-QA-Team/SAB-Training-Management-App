@@ -1,7 +1,216 @@
-<h3>register</h3>
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sign-up.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleguide.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/globals.css' %}" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="sign-up" />
+    <div class="container-center-horizontal">
+      <form class="sign-up screen" name="form1" action="form1" method="post">
+        <div class="overlap-group2">
+          <div class="rectangle-4-1"></div>
+          <img
+            class="primary-rgb_state-audit-bureau-1"
+            src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}"
+            alt="primary-rgb_state-audit-bureau 1"
+          />
+        </div>
+        <div class="input-text-field-container-1 input-text-field-container-3">
+          <div class="input-text-field">
+            <h1 class="title cairo-semi-bold-donkey-brown-28px">QID *</h1>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number-2 poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="ID Number"
+                  type="text"
+                  required
+                />
+                <div class="rectangle-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="input-text-field-1 input-text-field-3">
+            <div class="phone-number cairo-semi-bold-donkey-brown-28px">Phone Number *</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number-3 poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Phone no."
+                  type="text"
+                  required
+                />
+                <div class="rectangle-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-text-field-container input-text-field-3">
+          <div class="input-text-field">
+            <div class="first-name cairo-semi-bold-donkey-brown-28px">First Name *</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Enter First Name"
+                  type="text"
+                  required
+                />
+                <div class="rectangle-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="input-text-field-1 input-text-field-3">
+            <div class="organization cairo-semi-bold-donkey-brown-28px">Organization *</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number-4 poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Choose Organization"
+                  type="text"
+                  required
+                />
+                <div class="overlap-group1"><img class="polygon-1" src="img/polygon-1.svg" alt="Polygon 1" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-text-field-container input-text-field-3">
+          <div class="input-text-field-2 input-text-field-3">
+            <div class="last-name cairo-semi-bold-donkey-brown-28px">Last Name *</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Enter Last Name"
+                  type="text"
+                  required
+                />
+                <div class="rectangle-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="input-text-field-1 input-text-field-3">
+            <div class="address cairo-semi-bold-donkey-brown-28px">Address</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number-5 poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Enter Address"
+                  type="text"
+                  required
+                />
+                <div class="rectangle-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-text-field-container input-text-field-3">
+          <div class="input-text-field">
+            <div class="email cairo-semi-bold-donkey-brown-28px">Email *</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number-6 poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Enter Email"
+                  type="text"
+                  required
+                />
+                <div class="rectangle-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="input-text-field-1 input-text-field-3">
+            <div class="password cairo-semi-bold-donkey-brown-28px">Password *</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number-1 poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Enter Password"
+                  type="text"
+                  required
+                />
+                <div class="rectangle-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-text-field-container-2 input-text-field-container-3">
+          <div class="input-text-field">
+            <div class="job-title cairo-semi-bold-donkey-brown-28px">Job Title *</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number-7 poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Choose Job Title"
+                  type="text"
+                  required
+                />
+                <div class="overlap-group1"><img class="polygon-1" src="img/polygon-1-1.svg" alt="Polygon 1" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="input-text-field-2 input-text-field-3">
+            <div class="confirm-password cairo-semi-bold-donkey-brown-28px">Confirm Password *</div>
+            <div class="group-90">
+              <div class="overlap-group">
+                <input
+                  class="id-number-1 poppins-normal-santas-gray-16px"
+                  name="idnumber"
+                  placeholder="Enter Password"
+                  type="text"
+                  required
+                />
+                <div class="rectangle-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="javascript:SubmitForm('form1')" class="align-self-flex-end">
+          <div class="button-large-primary"><div class="give-access">Create Account</div></div></a
+        >
+      </form>
+    </div>
+    <script>
+      /* Copyright (c) 2016 Tobias Buschor https://goo.gl/gl0mbf | MIT License https://goo.gl/HgajeK */
 
-<form method= "POST" action = "">
-    {{form}} 
+      if (!HTMLFormElement.prototype.reportValidity) {
+        HTMLFormElement.prototype.reportValidity = function () {
+          if (this.checkValidity()) return true;
+          var btn = document.createElement("button");
+          this.appendChild(btn);
+          btn.click();
+          this.removeChild(btn);
+          return false;
+        };
+      }
 
-
-</form>
+      function SubmitForm(form_name) {
+        var form = document.getElementsByName(form_name)[0];
+        if (form.reportValidity()) {
+          form.submit();
+          if (window.submitted) window.submitted();
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -8,21 +8,28 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
 
 def login(request):
-    return HttpResponse('Login Page')
-
-def registeration(request):
-    return HttpResponse('Registration Page')
+    return HttpResponse('MAIN PAGE')
 
 #from .model import Course #When database is implemented
 
 #Login
 class CustomLoginView(LoginView):
-    template_name = template_name = 'base/login.html'
+    template_name = 'base/login.html'
     fields = '__all__'
     redirect_authenticated_user = True
 
     def get_success_url(self):
         return reverse_lazy('courses')
+
+#Registration
+class CustomRegistrationView(LoginView):
+    template_name = 'base/register.html'
+    fields = '__all__'
+    redirect_authenticated_user = True
+
+#    def get_success_url(self):
+#        return reverse_lazy('courses')
+    
 
 #Courses lisintg management
 #class CourseList(ListView):
