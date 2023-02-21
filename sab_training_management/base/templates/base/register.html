@@ -17,6 +17,7 @@
     <input type="hidden" id="anPageName" name="page" value="sign-up" />
     <div class="container-center-horizontal">
       <form class="sign-up screen" name="form1" action="form1" method="post">
+        {% csrf_token %}
         <div class="overlap-group2">
           <div class="rectangle-4-1"></div>
           <img
@@ -32,7 +33,7 @@
               <div class="overlap-group">
                 <input
                   class="id-number-2 poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="qid"
                   placeholder="ID Number"
                   type="text"
                   required
@@ -47,7 +48,7 @@
               <div class="overlap-group">
                 <input
                   class="id-number-3 poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="phone"
                   placeholder="Phone no."
                   type="text"
                   required
@@ -64,7 +65,7 @@
               <div class="overlap-group">
                 <input
                   class="id-number poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="firstName"
                   placeholder="Enter First Name"
                   type="text"
                   required
@@ -79,7 +80,7 @@
               <div class="overlap-group">
                 <input
                   class="id-number-4 poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="organization"
                   placeholder="Choose Organization"
                   type="text"
                   required
@@ -96,7 +97,7 @@
               <div class="overlap-group">
                 <input
                   class="id-number poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="lastName"
                   placeholder="Enter Last Name"
                   type="text"
                   required
@@ -111,7 +112,7 @@
               <div class="overlap-group">
                 <input
                   class="id-number-5 poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="address"
                   placeholder="Enter Address"
                   type="text"
                   required
@@ -128,7 +129,7 @@
               <div class="overlap-group">
                 <input
                   class="id-number-6 poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="email"
                   placeholder="Enter Email"
                   type="text"
                   required
@@ -143,9 +144,9 @@
               <div class="overlap-group">
                 <input
                   class="id-number-1 poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="pass"
                   placeholder="Enter Password"
-                  type="text"
+                  type="password"
                   required
                 />
                 <div class="rectangle-4"></div>
@@ -160,7 +161,7 @@
               <div class="overlap-group">
                 <input
                   class="id-number-7 poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="job"
                   placeholder="Choose Job Title"
                   type="text"
                   required
@@ -175,9 +176,9 @@
               <div class="overlap-group">
                 <input
                   class="id-number-1 poppins-normal-santas-gray-16px"
-                  name="idnumber"
+                  name="pass_conf"
                   placeholder="Enter Password"
-                  type="text"
+                  type="password"
                   required
                 />
                 <div class="rectangle-4"></div>

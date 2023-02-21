@@ -1,5 +1,6 @@
 #This file is not complete, its the blueprint for courses listing
 from django.shortcuts import render
+from .models import Trainee
 #from django.views.generic.list import ListView
 
 from django.urls import reverse_lazy
@@ -10,6 +11,9 @@ from django.http import HttpResponse
 def login(request):
     return HttpResponse('MAIN PAGE')
 
+def form1(request):
+    model = Trainee
+    return HttpResponse(request)
 #from .model import Course #When database is implemented
 
 #Login
@@ -23,6 +27,7 @@ class CustomLoginView(LoginView):
 
 #Registration
 class CustomRegistrationView(LoginView):
+    model = Trainee
     template_name = 'base/register.html'
     fields = '__all__'
     redirect_authenticated_user = True
