@@ -72,10 +72,10 @@
               <tr>
                   <td>{{traineeCourse.course}}</td>
                   <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-                  <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
-                  <td><a href="{% url 'drop-course' course_id=traineeCourse.course.id %}">DROP</a></td>
-                  <td><a href="{% url 'enter-class' course_id=traineeCourse.course.id %}">ENTER</a></td>
-                  <td><a href="{% url 'exit-class' course_id=traineeCourse.course.id %}">EXIT</a></td>
+                  <td><a class="btn btn-primary" href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a> </td>
+                  <td><a class="btn btn-primary" href="{% url 'drop-course' course_id=traineeCourse.course.id %}">DROP</a> </td>
+                  <td><a class="btn btn-primary" href="{% url 'enter-class' course_id=traineeCourse.course.id %}">ENTER</a> </td>
+                  <td><a class="btn btn-primary"href="{% url 'exit-class' course_id=traineeCourse.course.id %}">EXIT</a></td>
           
           
           
@@ -99,8 +99,8 @@
               <tr>
                   <td>{{traineeCourse.course}}</td>
                   <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-                  <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
-                  <td><a href="">VIEW CERTIFICATE</a></td>
+                  <td><a class="btn btn-primary" href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a> </td>
+                  <td><a class="btn btn-primary" href="">VIEW CERTIFICATE</a> </td>
           
               </tr>
               {%empty%}
@@ -122,7 +122,7 @@
               <tr>
                   <td>{{traineeCourse.course}}</td>
                   <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-                  <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
+                  <td><a class="btn btn-primary" href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a> </td>
           
               </tr>
               {%empty%}
