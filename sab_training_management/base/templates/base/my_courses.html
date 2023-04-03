@@ -51,77 +51,120 @@
     <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
    
   </nav>
-<h1> My Courses </h1>
+</div>
+<br> 
+<div class="container">
+<div class="container row">
+    <div class="col-lg-10">
+        <h3>My Courses:</h3>
+        <div class="card card-body">
+          <h3> Ongoing Courses</h3>
+          <table>
+              <tr>
+                  <th>Course</th>
+                  <th>Classes Attended</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+          
+              </tr>
+              {% for traineeCourse in ongoing %}
+              <tr>
+                  <td>{{traineeCourse.course}}</td>
+                  <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+                  <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
+                  <td><a href="{% url 'drop-course' course_id=traineeCourse.course.id %}">DROP</a></td>
+                  <td><a href="{% url 'enter-class' course_id=traineeCourse.course.id %}">ENTER</a></td>
+                  <td><a href="{% url 'exit-class' course_id=traineeCourse.course.id %}">EXIT</a></td>
+          
+          
+          
+              </tr>
+              {%empty%}
+              <h3>No Courses</h3>
+              {% endfor %}
+          </table>
+          
+          <br>
+          <h3> Completed Courses</h3>
+          <table>
+              <tr>
+                  <th>Course</th>
+                  <th>Classes Attended</th>
+                  <th></th>
+                  <th></th>
+          
+              </tr>
+              {% for traineeCourse in completed%}
+              <tr>
+                  <td>{{traineeCourse.course}}</td>
+                  <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+                  <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
+                  <td><a href="">VIEW CERTIFICATE</a></td>
+          
+              </tr>
+              {%empty%}
+              <h3>No Courses</h3>
+              {% endfor %}
+          </table>
+          
+          
+          <br>
+          <h3> Incomplete Courses</h3>
+          <table>
+              <tr>
+                  <th>Course</th>
+                  <th>Classes Attended</th>
+                  <th></th>
+          
+              </tr>
+              {% for traineeCourse in incomplete %}
+              <tr>
+                  <td>{{traineeCourse.course}}</td>
+                  <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+                  <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
+          
+              </tr>
+              {%empty%}
+              <h3>No Courses</h3>
+              {% endfor %}
+          </table>
+        </div>
+    </div>
+</div>
+ 
+<style>
+    /* Style the primary button */
+    .btn-primary {
+        background-color: #A29475 !important; 
+        border-color: #A29475 !important; 
+    }
 
+    .hello-msg{
+      font-size: 18px;
+      color: #fff;
+      margin-right: 20px;
+    }
+  
+    a:link {
+    color: #fff;
+    }
+  
+    a:hover {
+    color: #8A1738;
+    }
+  
+    .active {
+      background-color: #A29475;
+    }
+  
+    .navbar-custom {
+      background-color: #A29475;
+    }
+  
+    .nav-link {
+      color: #fff;
+    }
+    
+  </style>
 
-<h3> Ongoing Courses</h3>
-<table>
-    <tr>
-        <th>Course</th>
-        <th>Classes Attended</th>
-        <th></th>
-        <th></th>
-        <th></th>
-
-    </tr>
-    {% for traineeCourse in ongoing %}
-    <tr>
-        <td>{{traineeCourse.course}}</td>
-        <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-        <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
-        <td><a href="{% url 'drop-course' course_id=traineeCourse.course.id %}">DROP</a></td>
-        <td><a href="{% url 'enter-class' course_id=traineeCourse.course.id %}">ENTER</a></td>
-        <td><a href="{% url 'exit-class' course_id=traineeCourse.course.id %}">EXIT</a></td>
-
-
-
-    </tr>
-    {%empty%}
-    <h3>No Courses</h3>
-    {% endfor %}
-</table>
-
-<br>
-<h3> Completed Courses</h3>
-<table>
-    <tr>
-        <th>Course</th>
-        <th>Classes Attended</th>
-        <th></th>
-        <th></th>
-
-    </tr>
-    {% for traineeCourse in completed%}
-    <tr>
-        <td>{{traineeCourse.course}}</td>
-        <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-        <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
-        <td><a href="">VIEW CERTIFICATE</a></td>
-
-    </tr>
-    {%empty%}
-    <h3>No Courses</h3>
-    {% endfor %}
-</table>
-
-
-<br>
-<h3> Incomplete Courses</h3>
-<table>
-    <tr>
-        <th>Course</th>
-        <th>Classes Attended</th>
-        <th></th>
-
-    </tr>
-    {% for traineeCourse in incomplete %}
-    <tr>
-        <td>{{traineeCourse.course}}</td>
-        <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-        <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
-
-    </tr>
-    {%empty%}
-    <h3>No Courses</h3>
-    {% endfor %}
-</table>
