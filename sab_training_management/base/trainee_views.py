@@ -26,7 +26,8 @@ def register_trainee(request):
             trainee.address = form.cleaned_data['address']
             trainee.organization = form.cleaned_data['organization']
             trainee.job = form.cleaned_data['job']
-            trainee.manager = Manager.objects.get(organization=trainee.organization)
+            #Fix this for multiple managers
+            trainee.manager = Manager.objects.filter(organization=trainee.organization)[0]
             trainee.save()
             return redirect('login')
         else:
@@ -108,7 +109,7 @@ def register_course(request, course_id):
         courseObj.capacity -= 1
         courseObj.save()
     
-    return redirect("courses-list")
+    return redirect("my-courses")
 
 
 ################################################
