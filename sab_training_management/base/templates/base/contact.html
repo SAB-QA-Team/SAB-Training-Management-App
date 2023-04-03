@@ -35,9 +35,9 @@
       <ul class="navbar-nav">
         
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'courseslist' %}">Courses List</a>
+          <a class="nav-link" href="{% url 'courses-list' %}">Courses List</a>
         </li>
-        {% if request.user.is_staff %}
+        {% if request.user.is_trainee %}
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="">My Courses</a>
