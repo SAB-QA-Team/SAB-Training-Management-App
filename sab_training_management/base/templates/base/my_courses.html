@@ -47,7 +47,7 @@
       </ul>
     </div>
    
-    <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user}} </a> </span>
+    <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user.get_name}} </a> </span>
     <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
    
   </nav>
@@ -57,9 +57,9 @@
 <div class="container row">
     <div class="col-lg-10">
         <h3>My Courses:</h3>
-        <div class="card card-body">
-          <h3> Ongoing Courses</h3>
-          <table>
+        <div class="card card-body" style="width:1000px">
+          <h3 style="color:black"> Ongoing Courses</h3>
+          <table class="table table-sm">
               <tr>
                   <th>Course</th>
                   <th>Classes Attended</th>
@@ -76,18 +76,15 @@
                   <td><a class="btn btn-primary" href="{% url 'drop-course' course_id=traineeCourse.course.id %}">DROP</a> </td>
                   <td><a class="btn btn-primary" href="{% url 'enter-class' course_id=traineeCourse.course.id %}">ENTER</a> </td>
                   <td><a class="btn btn-primary"href="{% url 'exit-class' course_id=traineeCourse.course.id %}">EXIT</a></td>
-          
-          
-          
               </tr>
               {%empty%}
-              <h3>No Courses</h3>
+              <h4 style="color:black">No Courses</h4>
               {% endfor %}
           </table>
           
           <br>
           <h3> Completed Courses</h3>
-          <table>
+          <table class="table table-sm">
               <tr>
                   <th>Course</th>
                   <th>Classes Attended</th>
@@ -104,14 +101,14 @@
           
               </tr>
               {%empty%}
-              <h3>No Courses</h3>
+              <h4 style="color:black">No Courses</h4>
               {% endfor %}
           </table>
           
           
           <br>
           <h3> Incomplete Courses</h3>
-          <table>
+          <table class="table table-sm">
               <tr>
                   <th>Course</th>
                   <th>Classes Attended</th>
@@ -126,7 +123,7 @@
           
               </tr>
               {%empty%}
-              <h3>No Courses</h3>
+              <h4 style="color:black">No Courses</h4>
               {% endfor %}
           </table>
         </div>
@@ -166,5 +163,6 @@
       color: #fff;
     }
     
+  
   </style>
 
