@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no">
+
+      <title>Dashboard</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap-grid.min.css" integrity="sha512-zDDxSlYrbKTTfup/YyljmstpX+1jwjeg15AKS/fl26gRxfpD+HMr6dfuJQzCcFtoIEjf93SuCffose5gDQOZtg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- Custom CSS -->
+      <style>
+         body {
+         margin: 20px;
+         background-color: #fff;
+         }
+         .gold-border {
+         border: 10px solid#A29475;
+         padding: 20px;
+         background-color: #fff;
+         }
+         .maroon-bar {
+         background-color: #8A1538;
+         color: #fff;
+         height: 50px;
+         display: flex;
+         align-items: center;
+         justify-content: flex-start;
+         padding: 0 20px;
+         }
+         .maroon-bar h2 {
+         margin: 0;
+         font-weight: bold;
+         font-size: 24px;
+         }
+         .left-pane {
+         background-color: #f8f9fa;
+         padding: 20px;
+		 
+         }
+         .left-pane button {
+         background-color: #fff;
+         color: #000;
+         font-weight: bold;
+         margin-bottom: 10px;
+         border: none;
+         border-left: 5px solid #f8f9fa;
+		 width: 100%;
+         }
+         .left-pane button.active {
+         background-color: #007bff;
+         color: #fff;
+         border-color: #007bff;
+         }
+         .search-bar {
+         border-top-right-radius: 0;
+         border-bottom-right-radius: 0;
+         align-items: center;
+         justify-content: center;
+         border: 1px solid #ccc;
+         border-radius: 50px;
+         padding: 5px;
+         width: 275px;
+         margin: 0 auto;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         }
+         .search-btn {
+         border-top-left-radius: 0;
+         border-bottom-left-radius: 0;
+         color: #007bff;
+         }
+         .searcher {
+            text-align: right;
+         }
+      </style>
+    <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+</head>
+   <body>
+
+    <div class="header">
+      <div class="logo">
+         <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
+       </div>  
+    </div>
+
+<div class="gold-border container-fluid">
+   <div class="maroon-bar">
+      <h2>Dashboard</h2>
+   </div>
+   <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-5 bg-light order-sm-1">
+         <div class="left-pane">
+            <a href="{% url 'trainees' %}"><button class="btn active" id="trainees-button" >Trainees</button></a>
+            <button class="btn" id="managers-button">Managers</button>
+            <button class="btn" id="courses-button">Courses</button>
+            <button class="btn" id="instructors-button">Instructors</button>
+         </div>
+      </div>
+
+      <div class="col-lg-9 col-md-8 col-sm-7 bg-secondary order-sm-2">
+               <div id="trainees-content">
+                  <h1>LIST OF TRAINEES</h1>
+                  <table>
+                     <tr>
+                         <th>Trainee</th>
+                         <th></th>
+                         <th></th>
+                         <th></th>
+                     </tr>
+                     {% for trainee in trainees %}
+                     <tr>
+                         <td>{{trainee}}</td>
+                         <td><a href="{% url 'trainee' trainee.id %}">VIEW</a></td>
+                         <td><a href="{% url 'trainee-update' trainee.id %}">EDIT</a></td>
+                         <td><a href="{% url 'trainee-delete' trainee.id %}">DELETE</a></td>
+                 
+                     </tr>
+                     {%empty%}
+                     <h3>No trainees</h3>
+                     {% endfor %}
+                 </table>
+               </div>
+               <div id="managers-content" style="display: none;">
+                  <h1>LIST OF MANAGERS</h1>
+                  <div class="input-group my-2 searcher">
+                     <input type="text" class="form-control search-bar" placeholder="Search">
+                     <button class="btn btn-outline-secondary search-btn" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                  </div>
+                  
+				  <div class="text-end">
+                     <a href="#" class="text-muted small">+ Add Manager</a>
+                  </div>
+                  <table class="table table-striped">
+                     <thead>
+                        <tr>
+                           <th>Manager Name</th>
+                           <th></th>
+                        </tr>
+                     </thead>
+					 
+                     <tbody>
+                        <!-- Sample manager rows -->
+                        <tr>
+                           <td>Robert Smith</td>
+                           <td>
+                              <button class="btn btn-outline-primary btn-sm mr-2">View</button>
+                              <button class="btn btn-outline-success btn-sm">Edit</button>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Emma Johnson</td>
+                           <td>
+                              <button class="btn btn-outline-primary btn-sm mr-2">View</button>
+                              <button class="btn btn-outline-success btn-sm">Edit</button>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+
+               <div id="courses-content" style="display: none;">
+                  <h1>LIST OF COURSES</h1>
+                  <div class="input-group my-2 searcher">
+                     <input type="text" class="form-control search-bar" placeholder="Search">
+                     <button class="btn btn-outline-secondary search-btn" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                  </div>
+
+				  <div class="text-end">
+                     <a href="#" class="text-muted small">+ Add Course</a>
+                  </div>
+                  <table class="table table-striped">
+                     <thead>
+                        <tr>
+                           <th>Course Name</th>
+                           <th></th>
+                           <th>Instructor</th>
+                           <th></th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <!-- Sample course rows -->
+                        <tr>
+                           <td>Auditing I</td>
+                           <td></td>
+                           <td>John Doe</td>
+                           <td></td>
+                           <td>
+                              <button class="btn btn-outline-primary btn-sm mr-2"><a href="/course_details">View Details</a></button>
+                              <button class="btn btn-outline-success btn-sm">Edit</button>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Auditing II</td>
+                           <td></td>
+                           <td>Jane Smith</td>
+                           <td></td>
+                           <td>
+                              <button class="btn btn-outline-primary btn-sm mr-2"><a href="/course_details">View Details</a></button>
+                              <button class="btn btn-outline-success btn-sm">Edit</button>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+
+               <div id="instructors-content" style="display: none;">
+                  <h1>LIST OF INSTRUCTORS</h1>
+                  <div class="input-group my-2 searcher">
+                     <input type="text" class="form-control search-bar" placeholder="Search">
+                     <button class="btn btn-outline-secondary search-btn" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                  </div>
+                  <table class="table table-striped">
+                     <thead>
+                        <tr>
+                           <th>Instructor Name</th>
+                           <th></th>
+                        </tr>
+                     </thead>
+					 <div class="text-end">
+                     <a href="#" class="text-muted small">+ Add Instructor</a>
+                  </div>
+                     <tbody>
+                        <!-- Sample instructor rows -->
+                        <tr>
+                           <td>John Doe</td>
+                           <td>
+                              <button class="btn btn-outline-primary btn-sm mr-2">View</button>
+                              <button class="btn btn-outline-success btn-sm">Edit</button>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Jane Smith</td>
+                           <td>
+                              <button class="btn btn-outline-primary btn-sm mr-2">View</button>
+                              <button class="btn btn-outline-success btn-sm">Edit</button>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.min.js" integrity="sha512-eHx4nbBTkIr2i0m9SANm/cczPESd0DUEcfl84JpIuutE6oDxPhXvskMR08Wmvmfx5wUpVjlWdi82G5YLvqqJdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script>
+         // Get the buttons and content divs
+         var traineesButton = document.getElementById("trainees-button");
+         var managersButton = document.getElementById("managers-button");
+         var coursesButton = document.getElementById("courses-button");
+         var instructorsButton = document.getElementById("instructors-button");
+         var traineesContent = document.getElementById("trainees-content");
+         var managersContent = document.getElementById("managers-content");
+         var coursesContent = document.getElementById("courses-content");
+         var instructorsContent = document.getElementById("instructors-content");
+         
+         // Add click event listeners to the buttons
+         traineesButton.addEventListener("click", function() {
+           // Remove active class from all buttons
+           traineesButton.classList.add("active");
+           managersButton.classList.remove("active");
+           coursesButton.classList.remove("active");
+           instructorsButton.classList.remove("active");
+         
+           // Hide all content divs except for trainees
+           traineesContent.style.display = "block";
+           managersContent.style.display = "none";
+           coursesContent.style.display = "none";
+           instructorsContent.style.display = "none";
+         });
+         
+         managersButton.addEventListener("click", function() {
+           // Remove active class from all buttons
+           traineesButton.classList.remove("active");
+           managersButton.classList.add("active");
+           coursesButton.classList.remove("active");
+           instructorsButton.classList.remove("active");
+         
+           // Hide all content divs except for managers
+           traineesContent.style.display = "none";
+           managersContent.style.display = "block";
+           coursesContent.style.display = "none";
+           instructorsContent.style.display = "none";
+         });
+         
+         coursesButton.addEventListener("click", function() {
+           // Remove active class from all buttons
+           traineesButton.classList.remove("active");
+           managersButton.classList.remove("active");
+           coursesButton.classList.add("active");
+           instructorsButton.classList.remove("active");
+         
+           // Hide all content divs except for courses
+           traineesContent.style.display = "none";
+           managersContent.style.display = "none";
+           coursesContent.style.display = "block";
+           instructorsContent.style.display = "none";
+         });
+         
+         instructorsButton.addEventListener("click", function() {
+           // Remove active class from all buttons
+           traineesButton.classList.remove("active");
+           managersButton.classList.remove("active");
+           coursesButton.classList.remove("active");
+           instructorsButton.classList.add("active");
+         
+           // Hide all content divs except for instructors
+           traineesContent.style.display = "none";
+           managersContent.style.display = "none";
+           coursesContent.style.display = "none";
+           instructorsContent.style.display = "block";
+         });
+      </script>
+  <script src="{% static 'js/language_script.js' %}"></script>
+</body>
+
+</html>

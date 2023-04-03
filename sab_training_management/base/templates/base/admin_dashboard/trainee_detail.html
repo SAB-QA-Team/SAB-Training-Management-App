@@ -1,0 +1,13 @@
+<h1>  Trainee: {{trainee}} </h1>
+{% if user.is_admin %}
+  <a href="{% url 'trainees' %}">GO BACK</a>
+{% elif user.is_manager %}
+    <a href="{% url 'manager-trainees' %}">GO BACK</a>
+{% endif %}
+<p> first name: {{trainee.trainee.first_name}}</p>
+<p> last name: {{trainee.trainee.last_name}}</p>
+<p> email: {{trainee.trainee.email}}</p>
+<p> phone: {{trainee.phone}}</p>
+<p> job: {{trainee.job}}</p>
+<p> organization: {{trainee.organization}}</p>
+<p> manager: {{trainee.manager}}</p>

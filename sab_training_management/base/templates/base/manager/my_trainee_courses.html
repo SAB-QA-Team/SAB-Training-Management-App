@@ -1,0 +1,80 @@
+{% load calculate %}
+
+<h1> Trainee: {{trainee}} </h1>
+
+
+
+<h3> Ongoing Courses</h3>
+<table>
+    <tr>
+        <th>Course</th>
+        <th>Classes Attended</th>
+        <th></th>
+
+
+    </tr>
+    {% for traineeCourse in traineeCourses %}
+    {% if current_date < traineeCourse.course.end_date %}
+    <tr>
+        <td>{{traineeCourse.course}}</td>
+        <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+        <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
+
+
+
+
+    </tr>
+    {% endif %}
+    {%empty%}
+    <h3>No Courses</h3>
+    {% endfor %}
+</table>
+
+<br>
+<h3> Completed Courses</h3>
+<table>
+    <tr>
+        <th>Course</th>
+        <th>Classes Attended</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+    {% for traineeCourse in traineeCourses %}
+    {% if current_date >= traineeCourse.course.end_date and traineeCourse.classes_attended|divide:traineeCourse.course.number_of_classes  >= 0.9 %}
+    <tr>
+        <td>{{traineeCourse.course}}</td>
+        <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+        <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
+        <td><a href="">VIEW CERTIFICATE</a></td>
+
+    </tr>
+    {% endif %}
+    {%empty%}
+    <h3>No Courses</h3>
+    {% endfor %}
+</table>
+
+
+<br>
+<h3> Incomplete Courses</h3>
+<table>
+    <tr>
+        <th>Course</th>
+        <th>Classes Attended</th>
+        <th></th>
+
+    </tr>
+    {% for traineeCourse in traineeCourses %}
+    {% if current_date >= traineeCourse.course.end_date and traineeCourse.classes_attended|divide:traineeCourse.course.number_of_classes < 0.9 %}
+    <tr>
+        <td>{{traineeCourse.course}}</td>
+        <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+        <td><a href="{% url 'course-details-trainee' id_number=traineeCourse.course.id%}">VIEW</a></td>
+
+    </tr>
+    {% endif %}
+    {%empty%}
+    <h3>No Courses</h3>
+    {% endfor %}
+</table>

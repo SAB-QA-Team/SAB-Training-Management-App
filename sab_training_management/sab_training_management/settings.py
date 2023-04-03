@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
+    'accounts',
+    'django_otp',    
+    'django_otp.plugins.otp_totp',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'sab_training_management.urls'
@@ -126,3 +130,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "base/static",
 ]
+
+AUTH_USER_MODEL = "accounts.CustomUser"
+
+#LOGOUT_REDIRECT_URL = BASE_DIR / "base/templates/"
+
+# OTP Configuration
+OTP_TOTP_ISSUER = 'base'
+OTP_TOTP_AUTO_ADD = True

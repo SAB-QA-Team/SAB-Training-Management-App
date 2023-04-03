@@ -1,0 +1,11 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+<h1>User Profile</h1>
+{% if request.session.two_factor_authenticated %}
+  <p>You are currently authenticated.</p>
+{% else %}
+  <p>You are not authenticated.</p>
+  <a href="{% url 'qr-code' %}">Enable Two-Factor Authentication</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,100 @@
+/* Set the box-sizing property for all elements to border-box to include padding and border in element's total width and height */
+* {
+    box-sizing: border-box;
+}
+
+/* Set the base styles for the body */
+body {
+    margin: 0; 
+    font-family: sans-serif; 
+    color: #A29475;
+}
+
+/* Style the header section */
+.header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px; 
+    background-color: #8A1738;
+    height: 110px;
+}
+
+/* Style the logo */
+.logo img {
+    height: 50px;
+    width: 50px; 
+}
+
+/* Style the toggles section */
+.toggles {
+    display: flex; 
+    align-items: center; 
+}
+
+/* Style the toggle labels */
+.toggle-label {
+    color: darkgray; 
+    display: inline-block; 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    background-color: #000; 
+    cursor: pointer; 
+    position: relative; 
+    margin-right: 10px; 
+}
+
+/* Style the toggle icon */
+.toggle-label i {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    font-size: 20px; 
+}
+
+/* Hide the checkbox input */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Style the content section */
+.content {
+    padding: 20px; 
+}
+
+/* Set the initial display property of the English and Arabic sections */
+.english {
+    display: block; 
+}
+
+.arabic {
+    display: none; 
+    direction: rtl; 
+    unicode-bidi: embed; 
+}
+
+/* Show the Arabic section and hide the English section when the Arabic language is selected */
+.language-arabic .english {
+    display: none;
+}
+
+.language-arabic .arabic {
+    display: block;
+}
+
+/* Set the base styles for form elements */
+form,
+label,
+input,
+select,
+textarea {
+    color: #A29475 !important; /* Set text color to a light brown */
+}
+
+/* Style the primary button */
+.btn-primary {
+    background-color: #A29475 !important; 
+    border-color: #A29475 !important; 
+}

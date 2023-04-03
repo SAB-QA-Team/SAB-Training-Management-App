@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no">
+
+      <title>Dashboard</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap-grid.min.css" integrity="sha512-zDDxSlYrbKTTfup/YyljmstpX+1jwjeg15AKS/fl26gRxfpD+HMr6dfuJQzCcFtoIEjf93SuCffose5gDQOZtg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- Custom CSS -->
+      <style>
+         body {
+         margin: 20px;
+         background-color: #fff;
+         }
+         .gold-border {
+         border: 10px solid#A29475;
+         padding: 20px;
+         background-color: #fff;
+         }
+         .maroon-bar {
+         background-color: #8A1538;
+         color: #fff;
+         height: 50px;
+         display: flex;
+         align-items: center;
+         justify-content: flex-start;
+         padding: 0 20px;
+         }
+         .maroon-bar h2 {
+         margin: 0;
+         font-weight: bold;
+         font-size: 24px;
+         }
+         .left-pane {
+         background-color: #f8f9fa;
+         padding: 20px;
+		 
+         }
+         .left-pane button {
+         background-color: #fff;
+         color: #000;
+         font-weight: bold;
+         margin-bottom: 10px;
+         border: none;
+         border-left: 5px solid #f8f9fa;
+		 width: 100%;
+         }
+         .left-pane button.active {
+         background-color: #007bff;
+         color: #fff;
+         border-color: #007bff;
+         }
+         .search-bar {
+         border-top-right-radius: 0;
+         border-bottom-right-radius: 0;
+         align-items: center;
+         justify-content: center;
+         border: 1px solid #ccc;
+         border-radius: 50px;
+         padding: 5px;
+         width: 275px;
+         margin: 0 auto;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         }
+         .search-btn {
+         border-top-left-radius: 0;
+         border-bottom-left-radius: 0;
+         color: #007bff;
+         }
+         .searcher {
+            text-align: right;
+         }
+      </style>
+    <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+</head>
+   <body>
+
+    <div class="header">
+      <div class="logo">
+         <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
+       </div>  
+    </div>
+
+<div class="gold-border container-fluid">
+   <div class="maroon-bar">
+      <h2>Dashboard</h2>
+   </div>
+   <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-5 bg-light order-sm-1">
+         <div class="left-pane">
+            <a href="{% url 'trainees' %}"><button class="btn" id="trainees-button">Trainees</button></a>
+            <a href="{% url 'managers' %}"><button class="btn active" id="managers-button">Managers</button></a>
+            <a href="{% url 'courses' %}"><button class="btn" id="courses-button">Courses</button></a>
+            <a href="{% url 'instructors' %}"><button class="btn" id="managers-button">Instructors</button></a>
+         </div>
+      </div>
+
+      <div class="col-lg-9 col-md-8 col-sm-7 bg-secondary order-sm-2">
+               <div id="trainees-content">
+                  <h1>LIST OF MANAGERS</h1>
+                  <h4><a href="{% url 'manager-create' %}">Add</a></h4>
+                  <table>
+                     <tr>
+                         <th>Manager</th>
+                         <th></th>
+                         <th></th>
+                         <th></th>
+                     </tr>
+                     {% for manager in managers %}
+                     <tr>
+                        <td>{{manager}}</td>
+                        <td><a href="{% url 'manager' manager.id %}"><button class="btn btn-outline-primary btn-sm mr-2">View</button></a></td>
+                        <td><a href="{% url 'manager-update' manager.id %}"><button class="btn btn-outline-success btn-sm">Edit</button></a></td>
+                        <td><a href="{% url 'manager-delete' manager.id %}"><button class="btn btn-outline-success btn-sm">Delete</button></a></td>
+                     </tr>
+                     {%empty%}
+                     <h3>No managers</h3>
+                     {% endfor %}
+                 </table>
+               </div>
+               
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.min.js" integrity="sha512-eHx4nbBTkIr2i0m9SANm/cczPESd0DUEcfl84JpIuutE6oDxPhXvskMR08Wmvmfx5wUpVjlWdi82G5YLvqqJdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      
+      </script>
+  <script src="{% static 'js/language_script.js' %}"></script>
+</body>
+
+</html>

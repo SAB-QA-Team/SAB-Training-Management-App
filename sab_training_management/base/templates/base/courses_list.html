@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+</head>
+
+<div class="header">
+    <div class="logo">
+      <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
+    </div>
+    <div class="toggles">
+      <div class="language-toggle">
+        <label class="toggle-label" for="language-checkbox">
+          <i class="fas fa-globe language-icon"></i>
+        </label>
+        <input type="checkbox" id="language-checkbox">
+      </div>
+    </div>
+  </div>
+  
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+   
+      <ul class="navbar-nav">
+        
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'courses-list' %}">Courses List</a>
+        </li>
+        {% if request.user.is_trainee %}
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'my-courses' %}">My Courses</a>
+        </li>
+      
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+   
+    <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user}} </a> </span>
+    <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+   
+  </nav>
+<br> 
+<div class="container">
+<div class="container row">
+    <div class="col-lg-10">
+        <h3>Courses:</h3>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    
+                    <th>Name</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Capacity</th>
+                    <th></th>
+                </tr>
+                {% for course in courses %}
+                <tr>
+                    <td><b>{{course.name}}</b> </td>
+                    <td>{{course.start_time}} </td>
+                    <td>{{course.end_time}}</td>
+                    <td> {{course.capacity}} </td>
+                    <td><a class="btn btn-primary" href="{% url 'course-details' course.id%}">Details</a> </td>
+                    <td><a class="btn btn-primary" href="{% url 'register-course' course_id=course.id %}">Register</a> </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+ 
+<style>
+    /* Style the primary button */
+    .btn-primary {
+        background-color: #A29475 !important; 
+        border-color: #A29475 !important; 
+    }
+
+    .hello-msg{
+      font-size: 18px;
+      color: #fff;
+      margin-right: 20px;
+    }
+  
+    a:link {
+    color: #fff;
+    }
+  
+    a:hover {
+    color: #8A1738;
+    }
+  
+    .active {
+      background-color: #A29475;
+    }
+  
+    .navbar-custom {
+      background-color: #A29475;
+    }
+  
+    .nav-link {
+      color: #fff;
+    }
+    
+  </style>

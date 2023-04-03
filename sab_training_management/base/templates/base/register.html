@@ -1,217 +1,179 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
-    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
-    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
-    <meta name="og:type" content="website" />
-    <meta name="twitter:card" content="photo" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/sign-up.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styleguide.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/globals.css' %}" />
-  </head>
-  <body style="margin: 0; background: #ffffff">
-    <input type="hidden" id="anPageName" name="page" value="sign-up" />
-    <div class="container-center-horizontal">
-      <form class="sign-up screen" name="form1" action="form1" method="post">
-        {% csrf_token %}
-        <div class="overlap-group2">
-          <div class="rectangle-4-1"></div>
-          <img
-            class="primary-rgb_state-audit-bureau-1"
-            src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}"
-            alt="primary-rgb_state-audit-bureau 1"
-          />
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
         </div>
-        <div class="input-text-field-container-1 input-text-field-container-3">
-          <div class="input-text-field">
-            <h1 class="title cairo-semi-bold-donkey-brown-28px">QID *</h1>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number-2 poppins-normal-santas-gray-16px"
-                  name="qid"
-                  placeholder="ID Number"
-                  type="text"
-                  required
-                />
-                <div class="rectangle-4"></div>
-              </div>
+        <div class="toggles">
+            <div class="language-toggle">
+                <label class="toggle-label" for="language-checkbox">
+                    <i class="fas fa-globe language-icon"></i>
+                </label>
+                <input type="checkbox" id="language-checkbox">
             </div>
-          </div>
-          <div class="input-text-field-1 input-text-field-3">
-            <div class="phone-number cairo-semi-bold-donkey-brown-28px">Phone Number *</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number-3 poppins-normal-santas-gray-16px"
-                  name="phone"
-                  placeholder="Phone no."
-                  type="text"
-                  required
-                />
-                <div class="rectangle-4"></div>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="input-text-field-container input-text-field-3">
-          <div class="input-text-field">
-            <div class="first-name cairo-semi-bold-donkey-brown-28px">First Name *</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number poppins-normal-santas-gray-16px"
-                  name="firstName"
-                  placeholder="Enter First Name"
-                  type="text"
-                  required
-                />
-                <div class="rectangle-4"></div>
-              </div>
-            </div>
-          </div>
-          <div class="input-text-field-1 input-text-field-3">
-            <div class="organization cairo-semi-bold-donkey-brown-28px">Organization *</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number-4 poppins-normal-santas-gray-16px"
-                  name="organization"
-                  placeholder="Choose Organization"
-                  type="text"
-                  required
-                />
-                <div class="overlap-group1"><img class="polygon-1" src="img/polygon-1.svg" alt="Polygon 1" /></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="input-text-field-container input-text-field-3">
-          <div class="input-text-field-2 input-text-field-3">
-            <div class="last-name cairo-semi-bold-donkey-brown-28px">Last Name *</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number poppins-normal-santas-gray-16px"
-                  name="lastName"
-                  placeholder="Enter Last Name"
-                  type="text"
-                  required
-                />
-                <div class="rectangle-4"></div>
-              </div>
-            </div>
-          </div>
-          <div class="input-text-field-1 input-text-field-3">
-            <div class="address cairo-semi-bold-donkey-brown-28px">Address</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number-5 poppins-normal-santas-gray-16px"
-                  name="address"
-                  placeholder="Enter Address"
-                  type="text"
-                  required
-                />
-                <div class="rectangle-4"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="input-text-field-container input-text-field-3">
-          <div class="input-text-field">
-            <div class="email cairo-semi-bold-donkey-brown-28px">Email *</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number-6 poppins-normal-santas-gray-16px"
-                  name="email"
-                  placeholder="Enter Email"
-                  type="text"
-                  required
-                />
-                <div class="rectangle-4"></div>
-              </div>
-            </div>
-          </div>
-          <div class="input-text-field-1 input-text-field-3">
-            <div class="password cairo-semi-bold-donkey-brown-28px">Password *</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number-1 poppins-normal-santas-gray-16px"
-                  name="pass"
-                  placeholder="Enter Password"
-                  type="password"
-                  required
-                />
-                <div class="rectangle-4"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="input-text-field-container-2 input-text-field-container-3">
-          <div class="input-text-field">
-            <div class="job-title cairo-semi-bold-donkey-brown-28px">Job Title *</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number-7 poppins-normal-santas-gray-16px"
-                  name="job"
-                  placeholder="Choose Job Title"
-                  type="text"
-                  required
-                />
-                <div class="overlap-group1"><img class="polygon-1" src="img/polygon-1-1.svg" alt="Polygon 1" /></div>
-              </div>
-            </div>
-          </div>
-          <div class="input-text-field-2 input-text-field-3">
-            <div class="confirm-password cairo-semi-bold-donkey-brown-28px">Confirm Password *</div>
-            <div class="group-90">
-              <div class="overlap-group">
-                <input
-                  class="id-number-1 poppins-normal-santas-gray-16px"
-                  name="pass_conf"
-                  placeholder="Enter Password"
-                  type="password"
-                  required
-                />
-                <div class="rectangle-4"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="javascript:SubmitForm('form1')" class="align-self-flex-end">
-          <div class="button-large-primary"><div class="give-access">Create Account</div></div></a
-        >
-      </form>
     </div>
-    <script>
-      /* Copyright (c) 2016 Tobias Buschor https://goo.gl/gl0mbf | MIT License https://goo.gl/HgajeK */
-
-      if (!HTMLFormElement.prototype.reportValidity) {
-        HTMLFormElement.prototype.reportValidity = function () {
-          if (this.checkValidity()) return true;
-          var btn = document.createElement("button");
-          this.appendChild(btn);
-          btn.click();
-          this.removeChild(btn);
-          return false;
-        };
-      }
-
-      function SubmitForm(form_name) {
-        var form = document.getElementsByName(form_name)[0];
-        if (form.reportValidity()) {
-          form.submit();
-          if (window.submitted) window.submitted();
-        }
-      }
-    </script>
-  </body>
+    <form class="m-3 english" method = "post">
+      {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="{{ form.username.id_for_label }}" class="form-label">QID <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="{{ form.username.auto_id }}" name="{{ form.username.html_name }}" placeholder="Enter QID" required>
+                    {% if form.username.errors %}
+                        <div class="error">{{ form.username.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="{{ form.first_name.auto_id }}" name="{{ form.first_name.html_name }}" placeholder="Enter First Name" required>
+                    {% if form.first_name.errors %}
+                        <div class="error">{{ form.first_name.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="last-name" class="form-label">Last Name <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="last-name"  name="last_name" placeholder="Enter Last Name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email <span class="text-danger">*</span>
+                    </label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span>
+                    </label>
+                    <input type="tel" class="form-control" id="phone" name="phone"  placeholder="Enter Phone Number" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="organization" class="form-label">Organization <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select" id="organization" name="organization" required>
+                        <option selected disabled value="">Choose an organization...</option>
+                        <option value="Ministry of Interior">Ministry of Interior</option>
+                        <option value="Ministry of Communication and Information Technology">Ministry of Communication and Information Technology</option>
+                        <option value="Ministry of Finance">Ministry of Finance</option>
+                        <option value="Ministry of Culture">Ministry of Culture</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="job-title" class="form-label">Job Title <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select" id="job-title" name="job" required>
+                        <option selected disabled value="">Choose a job title...</option>
+                        <option value="Accountant">Accountant</option>
+                        <option value="Auditor">Auditor</option>
+                        <option value="Financial Analyst">Financial Analyst</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea class="form-control" id="address" name="address" placeholder="Enter Address"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password <span class="text-danger">*</span>
+                    </label>
+                    <input type="password" class="form-control" id="password" name="password1" placeholder="Enter Password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirm Password <span class="text-danger">*</span>
+                    </label>
+                    <input type="password" class="form-control" id="confirm-password" name="password2" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <div class="mt-3">Already have an account? <a href="/login">Login here</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form class="m-3 arabic">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="qid" class="form-label">QID <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="qid" placeholder="ادخل الرقم الوطني" required pattern="[0-9]+">
+                </div>
+                <div class="mb-3">
+                    <label for="first-name" class="form-label">الاسم  <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="first-name" placeholder="ادخل الاسم " required>
+                </div>
+                <div class="mb-3">
+                    <label for="last-name" class="form-label">اسم العائلة <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="last-name" placeholder="ادخل اسم العائلة" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">البريد الالكتروني <span class="text-danger">*</span>
+                    </label>
+                    <input type="email" class="form-control" id="email" placeholder="ادخل البريد الالكتروني" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">رقم الهاتف <span class="text-danger">*</span>
+                    </label>
+                    <input type="tel" class="form-control" id="phone" placeholder="ادخل رقم الهاتف" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="organization" class="form-label">المؤسسة / الشركة <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select" id="organization" required>
+                        <option selected disabled value="">اختر المؤسسة ...</option>
+                        <option value="Ministry of Interior">وزارة الداخلية</option>
+                        <option value="Ministry of Communication and Information Technology">وزارة الاتصالات وتكنلوجيا المعلومات</option>
+                        <option value="Ministry of Finance">وزارة المالية</option>
+                        <option value="Ministry of Culture">وزارة الثقافة</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="job-title" class="form-label">المسمى الوظيفي <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select" id="job-title" required>
+                        <option selected disabled value="">اختر المسمى الوظيفي...</option>
+                        <<option value="Accountant">محاسب</option>
+                        <option value="Auditor">مدقق حسابات</option>
+                        <option value="Financial Analyst">محلل مالي</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">العنوان</label>
+                    <textarea class="form-control" id="address" placeholder="أدخل العنوان"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">كلمة السر <span class="text-danger">*</span>
+                    </label>
+                    <input type="password" class="form-control" id="password" placeholder="أدخل كلمة السر" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">تأكيد كلمة السر <span class="text-danger">*</span>
+                    </label>
+                    <input type="password" class="form-control" id="confirm-password" placeholder="تأكيد كلمة السر" required>
+                </div>
+                <button type="submit" class="btn btn-primary">التسجيل</button>
+                <div class="mt-3">لديك حساب؟ <a href="/login">تسجيل الدخول هنا</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/language_script.js' %}"></script>
+</body>
 </html>

@@ -1,0 +1,104 @@
+/* Apply box-sizing to all elements for consistent box model */
+* {
+    box-sizing: border-box;
+    }
+    
+    /* Style the body with margin, font family, and color */
+    body {
+    margin: 0;
+    font-family: sans-serif;
+    color: #fff;
+    background-color: #8A1738;
+    }
+    
+    /* Style the header with flexbox and a background color */
+    .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #A29475;
+    }
+    
+    /* Style the logo with fixed height and width */
+    .logo img  {
+        height: 176px;
+        width: 455px;
+    }
+    
+    /* Style the toggle container with flexbox */
+    .toggles {
+    display: flex;
+    align-items: center;
+    }
+    
+    /* Style the toggle label with color, background, and positioning */
+    .toggle-label {
+    color: darkgray;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #000;
+    cursor: pointer;
+    position: relative;
+    margin-right: 10px;
+    }
+    
+    /* Style the toggle icon with positioning and font size */
+    .toggle-label i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    }
+    
+    /* Hide the checkbox input */
+    input[type="checkbox"] {
+    display: none;
+    }
+    
+    /* Style the content with padding */
+    .content {
+    padding: 20px;
+    }
+    
+    /* Show the English content and hide the Arabic content by default */
+    .english {
+    display: block;
+    }
+    
+    .arabic {
+    display: none;
+    direction: rtl;
+    unicode-bidi: embed;
+    }
+    
+    /* Show the Arabic content and hide the English content when language is set to Arabic */
+    .language-arabic .english {
+    display: none;
+    }
+    
+    .language-arabic .arabic {
+    display: block;
+    }
+    
+    /* Style the primary button with background and border color */
+    .btn-primary {
+    color: #8A1738;
+    background-color: #FFF !important;
+    border-color: #A29475 !important;
+    }
+    
+    /* Style the primary button hover state with color and background color */
+    .btn-primary:hover {
+    color: #700;
+    background-color: #EEE !important;
+    }
+    
+    /* Style the login other side container with background color */
+    .login_other_side {
+    background-color: #FFF;
+    height: 100vh;
+    }

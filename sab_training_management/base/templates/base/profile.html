@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+</head>
+
+<body>
+  {% csrf_token %}
+  <div class="header">
+    <div class="logo">
+      <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
+    </div>
+    <div class="toggles">
+      <div class="language-toggle">
+        <label class="toggle-label" for="language-checkbox">
+          <i class="fas fa-globe language-icon"></i>
+        </label>
+        <input type="checkbox" id="language-checkbox">
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+   
+      <ul class="navbar-nav">
+        
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'courses-list' %}">Courses List</a>
+        </li>
+        {% if request.user.is_trainee %}
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="">My Courses</a>
+        </li>
+      
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'contact'%}">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+   
+    <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user.get_name}} </a> </span>
+    <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+   
+  </nav>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <a class="english">My Profile</a>
+            <a class="arabic">ملفّي الشخصيّ</a>
+          </div>
+
+          <div class="card-body">
+            <form method="POST" action="" class="english"> {% csrf_token %} <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" value="{{ user.first_name }}" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" value="{{ trainee.trainee.last_name }}"  disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="qid">QID:</label>
+                <input type="text" name="qid" id="qid" class="form-control" value="{{ trainee.trainee.username }}" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="tel" name="phone_number" id="phone_number" class="form-control" value="{{ trainee.phone }}" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone_number">Manager:</label>
+                <input type="tel" name="phone_number" id="phone_number" class="form-control" value="{{ trainee.manager }}" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="organisation">Organization:</label>
+                <select name="organisation" id="organisation" class="form-control" required disabled>
+                  <option value="" selected disabled hidden>Ministry of Interior</option>
+                  <option value="Ministry of Interior">Ministry of Interior</option>
+                  <option value="Ministry of Communication and Information Technology">Ministry of Communication and Information Technology</option>
+                  <option value="Ministry of Finance">Ministry of Finance</option>
+                  <option value="Ministry of Culture">Ministry of Culture</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="job_title">Job Title:</label>
+                <input type="text" name="job_title" id="job_title" class="form-control" value="{{ user.job_title }}" placeholder="Auditor" disabled required>
+              </div>
+              
+              <div class="form-group">
+                <button type="button" class="btn btn-primary">My Certificate</button>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-success float-end">Save</button>
+                <button type="button" class="btn btn-secondary float-end me-2">Edit</button>
+              </div>
+            </form>
+
+            <form method="POST" action="" class="arabic"> {% csrf_token %} <div class="form-group">
+                <label for="first_name">الاسم :</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" value="{{ user.first_name }}" placeholder="جون" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="last_name">اسم العائلة:</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" value="{{ user.last_name }}" placeholder="دو" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="qid">الرقم الشخصي:</label>
+                <input type="text" name="qid" id="qid" class="form-control" value="{{ user.profile.qid }}" placeholder="123456789" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone_number">رقم الهاتف:</label>
+                <input type="tel" name="phone_number" id="phone_number" class="form-control" value="{{ user.profile.phone_number }}" placeholder="+974-XXX-XXXXX" disabled required>
+              </div>
+
+              <div class="form-group">
+                <label for="organisation">المؤسسة:</label>
+                <select name="organisation" id="organisation" class="form-control" required disabled>
+                  <option value="" selected disabled hidden>وزارة الداخلية</option>
+                  <option value="Ministry of Interior">وزارة الداخلية</option>
+                  <option value="Ministry of Communication and Information Technology">وزارة الاتصالات وتكنلوجيا المعلومات</option>
+                  <option value="Ministry of Finance">وزارة المالية</option>
+                  <option value="Ministry of Culture">وزارة الثقافة</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="job_title">Job Title:</label>
+                <input type="text" name="job_title" id="job_title" class="form-control" value="{{ user.job_title }}" placeholder="مدقق حسابات" disabled required>
+              </div>
+
+              <div class="form-group">
+                <button type="button" class="btn btn-primary">شهاداتي</button>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-success float-end">حفظ</button>
+                <button type="button" class="btn btn-secondary float-end me-2">تعديل</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/language_script.js' %}"></script>
+  <script src="{% static 'js/edit_profile.js' %}"></script>
+</body>
+</html>
+
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+
+  a:link {
+  color: #fff;
+  }
+
+  a:hover {
+  color: #8A1738;
+  }
+
+  .active {
+    background-color: #A29475;
+  }
+
+  .navbar-custom {
+    background-color: #A29475;
+  }
+
+  .nav-link {
+    color: #fff;
+  }
+</style>

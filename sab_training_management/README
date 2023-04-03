@@ -1,0 +1,68 @@
+My Django Project
+
+This is a simple Django project. This README file will guide you through the installation process and provide a brief overview of the major functionalities in a Django app.
+
+Installation
+
+1. Ensure you have Python installed on your system. You can check by running `python --version` or `python3 --version` in your terminal.
+
+2. Install Django using pip:
+
+pip install django
+
+3. Clone this repository:
+
+git clone https://github.com/yourusername/your-django-project.git
+
+4. Navigate to the project directory:
+
+cd your-django-project
+
+5. Create and activate a virtual environment (optional, but recommended):
+
+python -m venv venv
+source venv/bin/activate  # On Windows, use 'venv\Scripts\activate'
+
+6. Install the required packages:
+
+pip install -r requirements.txt
+
+Database Setup
+
+1. Run migrations to create the database schema:
+
+python manage.py makemigrations
+python manage.py migrate
+
+Running the Development Server
+
+1. Start the development server:
+
+python manage.py runserver
+
+2. Open your browser and navigate to `http://127.0.0.1:8000/` to view the app.
+
+Major Files in the app
+
+Here are the major files in a Django app and their functionalities:
+
+Base App:
+
+models.py: This file defines the data models for your app, which are used to interact with the database.
+
+views.py: This file contains the functions that handle HTTP requests and generate HTTP responses. Views are the main logic of your app.
+
+urls.py: This file maps URLs to view functions, defining the structure of your app's URLs.
+
+forms.py: This file contains the form classes that are used to validate user input and generate HTML forms.
+
+admin.py: This file defines the admin interface for your app, allowing you to manage your app's data through a web-based interface.
+
+templates/: This directory contains the HTML templates used by your views to generate HTML responses.
+
+static/: This directory contains static files such as CSS, JavaScript, and images that are used by your app's HTML templates.
+
+Accounts App:
+
+models.py: This file contains the feilds and functionalities relevant to a custom user.
+

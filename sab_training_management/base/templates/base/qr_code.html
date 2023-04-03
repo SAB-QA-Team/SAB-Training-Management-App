@@ -1,0 +1,20 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="text-center mb-5">Two-Factor Authentication Setup</h1>
+
+    <p class="text-center mb-5">Scan this QR code with your authenticator app:</p>
+    <div class="text-center mb-5">
+      <img src="https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl={{ otp_uri }}" alt="QR code">
+    </div>
+
+    <div class="text-center mb-5">
+      <p>Your secret key is: {{ request.user.secret_key }}</p>
+    </div>
+
+    <div class="text-center">
+      <a href="{% url 'two-factor-auth' %}" class="btn btn-primary">Next</a>
+    </div>
+  </div>
+{% endblock %}
