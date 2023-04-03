@@ -113,13 +113,13 @@ th {
                 <th>Classes Attended</th>
                 <th></th>
 
-            </tr>
-            {% for traineeCourse in traineeCourses %}
-            {% if current_date >= traineeCourse.course.end_date and traineeCourse.classes_attended|divide:traineeCourse.course.number_of_classes < 0.9 %}
-            <tr>
-                <td>{{traineeCourse.course}}</td>
-                <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-                <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
+    </tr>
+    {% for traineeCourse in traineeCourses %}
+    {% if current_date >= traineeCourse.course.end_date and traineeCourse.classes_attended|divide:traineeCourse.course.number_of_classes < 0.9 %}
+    <tr>
+        <td>{{traineeCourse.course}}</td>
+        <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+        <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
 
             </tr>
             {% endif %}

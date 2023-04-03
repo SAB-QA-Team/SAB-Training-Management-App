@@ -67,7 +67,8 @@ def courses_list(request):
     }
     return render(request, "base/courses_list.html", context)
 
-@user_passes_test(is_trainee, login_url='login')
+#Add lambda
+@user_passes_test(lambda u: u.is_trainee or u.is_manager, login_url='login')
 def course_details(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     context = {'course':course}

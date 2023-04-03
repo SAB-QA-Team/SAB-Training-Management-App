@@ -74,6 +74,8 @@
             <p>{{ course.number_of_classes }}</p>
             <b>Course Capacity:</b>
             <p>{{ course.capacity }}</p>
+            <b>Course Start Date:</b>
+            <p>{{ course.start_date }}</p>
             <b>Course End Date:</b>
             <p>{{ course.end_date }}</p>
             <td><a class="btn btn-primary" href="{% url 'register-course' course_id=course.id %}">Register</a> </td>
