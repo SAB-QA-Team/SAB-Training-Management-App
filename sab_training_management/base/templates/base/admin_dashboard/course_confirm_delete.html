@@ -1,7 +1,28 @@
-<a href="{% url 'courses' %}">GO BACK</a>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no">
+
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap-grid.min.css" integrity="sha512-zDDxSlYrbKTTfup/YyljmstpX+1jwjeg15AKS/fl26gRxfpD+HMr6dfuJQzCcFtoIEjf93SuCffose5gDQOZtg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+    
+</head>
+<div class="header">
+    <div class="logo">
+       <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
+      </div>  
+      <div class="language-toggle">
+        <span ><a  style="color:white;"class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+     </div>
+  </div>
+  
+<a class="btn btn-primary" style="width: 70px; height:20px; color:white;" href="{% url 'courses' %}"> BACK</a>
 <form method="POST"> 
     {% csrf_token %}
-    <p> Are you sure you want to delete this course? "{{course}}"</p>
+    <p style=color:black> Are you sure you want to delete this course? "{{course}}"</p>
     <input type="submit" value="Delete"/>
 
 </form>

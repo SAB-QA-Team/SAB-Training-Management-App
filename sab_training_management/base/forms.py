@@ -63,8 +63,8 @@ class ManagerEditForm(forms.ModelForm):
         
 class AuthenticationTokenForm(forms.Form):
     token = forms.CharField(
-        label='Token',
-        help_text='Enter the six-digit code from your authenticator app.',
+        label='OTP',
+        help_text='Enter the six-digit code from your Google Authenticator app.',
         widget=forms.TextInput(attrs={'autocomplete': 'off'})
     )
         

@@ -73,6 +73,11 @@
          .searcher {
             text-align: right;
          }
+         .hello-msg{
+          font-size: 18px;
+          color: #fff;
+          margin-right: 20px;
+        }
       </style>
     <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
 </head>
@@ -82,9 +87,13 @@
       <div class="logo">
          <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
        </div>  
+       <div class="language-toggle">
+         <span ><a  style="color:white;"class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+      </div>
     </div>
 
 <div class="gold-border container-fluid">
+   
    <div class="maroon-bar">
       <h2>Dashboard</h2>
    </div>
