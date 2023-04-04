@@ -1,17 +1,14 @@
 {% load static %}
-
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
-  <title>Contact Us</title>
+  <title>Profile</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
 </head>
 
-<body>
-  {% csrf_token %}
-  <div class="header">
+<div class="header">
     <div class="logo">
       <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
     </div>
@@ -24,7 +21,7 @@
       </div>
     </div>
   </div>
-
+  
   <nav class="navbar navbar-expand-lg navbar-custom">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -40,19 +37,18 @@
         {% if request.user.is_trainee %}
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="">My Courses</a>
+          <a class="nav-link" href="{% url 'my-courses' %}">My Courses</a>
         </li>
       
         {% endif %}
         <li class="nav-item">
-          <a class="nav-link" href="{%url 'contact'%}">Contact Us</a>
+          <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
         </li>
       </ul>
     </div>
    
-    <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user}} </a> </span>
+    <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user.get_name}} </a> </span>
     <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
-   
   </nav>
 
   <div class="container">

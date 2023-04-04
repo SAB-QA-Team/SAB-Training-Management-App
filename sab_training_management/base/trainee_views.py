@@ -34,7 +34,7 @@ def register_trainee(request):
             trainee.organization = form.cleaned_data['organization']
             trainee.job = form.cleaned_data['job']
             #Fix this for multiple managers
-            trainee.manager = Manager.objects.filter(organization=trainee.organization)[0]
+            trainee.manager = Manager.objects.filter(organization=trainee.organization).first()
             trainee.save()
             return redirect('login')
         else:
