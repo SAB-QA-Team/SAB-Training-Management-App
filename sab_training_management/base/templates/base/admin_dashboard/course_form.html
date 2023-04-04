@@ -34,6 +34,17 @@
          font-weight: bold;
          font-size: 24px;
          }
+         .btn-primary {
+        background-color: #A29475 !important; 
+        border-color: #A29475 !important; 
+        }
+        a:link {
+    color: #fff;
+    }
+  
+    a:hover {
+    color: #8A1738;
+    }
       </style>
       <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
 </head>
@@ -43,6 +54,9 @@
       <div class="logo">
          <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
         </div>  
+        <div class="language-toggle">
+          <span ><a  style="color:white;"class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+       </div>
     </div>
 
    
@@ -54,7 +68,8 @@
     
       <div class="container">
         <div class="row justify-content-center">
-        <a href="{% url 'courses' %}" text-align=left;>BACK</a>
+          <a class="btn btn-primary" style="width: 70px; height:20px; color:white;" href="{% url 'courses' %}" text-align=left;>BACK</a></td>
+        
           <div class="col-md-8">
             <div class="card">
               <div class="card-header">

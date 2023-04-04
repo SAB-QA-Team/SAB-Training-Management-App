@@ -44,6 +44,9 @@
       <div class="logo">
          <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
         </div>  
+        <div class="language-toggle">
+          <span ><a  style="color:white;"class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+       </div>
     </div>
 
     <div class="gold-border container-fluid">
@@ -55,9 +58,9 @@
       <div class="container">
         <div class="row justify-content-center">
             {% if user.is_admin %}
-                <a href="{% url 'trainees' %}">GO BACK</a>
+                <a class="btn btn-primary" style="width: 70px; height:20px; color:white;" href="{% url 'trainees' %}"> BACK</a>
             {% elif user.is_manager %}
-                <a href="{% url 'manager-trainees' %}">GO BACK</a>
+                <a class="btn btn-primary" style="width: 70px; height:20px; color:white;" href="{% url 'manager-trainees' %}"> BACK</a>
             {% endif %}
           <div class="col-md-8">
             <div class="card">

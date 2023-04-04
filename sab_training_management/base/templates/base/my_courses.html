@@ -57,9 +57,9 @@
 <div class="container row">
     <div class="col-lg-10">
         <h3>My Courses:</h3>
-        <div class="card card-body">
-          <h3> Ongoing Courses</h3>
-          <table>
+        <div class="card card-body" style="width:1000px">
+          <h3 style="color:black"> Ongoing Courses</h3>
+          <table class="table table-sm">
               <tr>
                   <th>Course</th>
                   <th>Classes Attended</th>
@@ -72,22 +72,19 @@
               <tr>
                   <td>{{traineeCourse.course}}</td>
                   <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-                  <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
-                  <td><a href="{% url 'drop-course' course_id=traineeCourse.course.id %}">DROP</a></td>
-                  <td><a href="{% url 'enter-class' course_id=traineeCourse.course.id %}">ENTER</a></td>
-                  <td><a href="{% url 'exit-class' course_id=traineeCourse.course.id %}">EXIT</a></td>
-          
-          
-          
+                  <td><a class="btn btn-primary" href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a> </td>
+                  <td><a class="btn btn-primary" href="{% url 'drop-course' course_id=traineeCourse.course.id %}">DROP</a> </td>
+                  <td><a class="btn btn-primary" href="{% url 'enter-class' course_id=traineeCourse.course.id %}">ENTER</a> </td>
+                  <td><a class="btn btn-primary"href="{% url 'exit-class' course_id=traineeCourse.course.id %}">EXIT</a></td>
               </tr>
               {%empty%}
-              <h3>No Courses</h3>
+              <h4 style="color:black">No Courses</h4>
               {% endfor %}
           </table>
           
           <br>
           <h3> Completed Courses</h3>
-          <table>
+          <table class="table table-sm">
               <tr>
                   <th>Course</th>
                   <th>Classes Attended</th>
@@ -99,19 +96,24 @@
               <tr>
                   <td>{{traineeCourse.course}}</td>
                   <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+<<<<<<< HEAD
                   <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
                   <td><a href="{% url 'generate-certificate' course_id=traineeCourse.course.id%}">VIEW CERTIFICATE</a></td>
+=======
+                  <td><a class="btn btn-primary" href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a> </td>
+                  <td><a class="btn btn-primary" href="">VIEW CERTIFICATE</a> </td>
+>>>>>>> 5f46fe71ee36c6c6121c4691e41fb14a6b47c536
           
               </tr>
               {%empty%}
-              <h3>No Courses</h3>
+              <h4 style="color:black">No Courses</h4>
               {% endfor %}
           </table>
           
           
           <br>
           <h3> Incomplete Courses</h3>
-          <table>
+          <table class="table table-sm">
               <tr>
                   <th>Course</th>
                   <th>Classes Attended</th>
@@ -122,11 +124,11 @@
               <tr>
                   <td>{{traineeCourse.course}}</td>
                   <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
-                  <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a></td>
+                  <td><a class="btn btn-primary" href="{% url 'course-details' course_id=traineeCourse.course.id%}">VIEW</a> </td>
           
               </tr>
               {%empty%}
-              <h3>No Courses</h3>
+              <h4 style="color:black">No Courses</h4>
               {% endfor %}
           </table>
         </div>
@@ -166,5 +168,6 @@
       color: #fff;
     }
     
+  
   </style>
 
