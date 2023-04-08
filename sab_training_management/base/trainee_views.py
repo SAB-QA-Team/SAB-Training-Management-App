@@ -15,6 +15,13 @@ from .forms import TraineeRegistrationForm
 
 from .views import *
 
+#Certififacte Generation
+import io
+import PyPDF2
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from django.http import FileResponse
+
 #Registration
 def register_trainee(request):
     if request.method == 'POST':
@@ -27,7 +34,7 @@ def register_trainee(request):
             trainee.organization = form.cleaned_data['organization']
             trainee.job = form.cleaned_data['job']
             #Fix this for multiple managers
-            trainee.manager = Manager.objects.filter(organization=trainee.organization)[0]
+            trainee.manager = Manager.objects.filter(organization=trainee.organization).first()
             trainee.save()
             return redirect('login')
         else:
@@ -115,13 +122,6 @@ def register_course(request, course_id):
 
 ################################################
 
-def myInfo(request):
-    trainee = Trainee.objects.get(id=1)
-    context = {'trainee':trainee}
-    return render(request, 'base/trainee/my_info.html', context)
-
-
-
 def enter_class(request, course_id):
     traineeObj = Trainee.objects.get(trainee=request.user)
     courseObj = Course.objects.get(id=course_id)
@@ -167,3 +167,65 @@ def drop_course(request, course_id):
     currCourse.save()
     attendance_instance.delete()
     return redirect('my-courses')
+
+def generate_certificate(request, course_id):
+    # Get the user's name
+    user_name = request.user.get_name()
+    currCourse = Course.objects.get(id=course_id)
+    # Load the certificate template PDF
+    template_path = 'base/static/certificate_template.pdf'
+    template = PyPDF2.PdfReader(template_path)
+
+    # Create a new PDF with the user's name
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=letter, bottomup=0)
+
+    # Add user's name at the appropriate coordinates (customize as needed)
+    c.saveState()  # Save the current state of the canvas
+    c.rotate(-90)  # Set the rotation angle to -90 degrees to counter the template rotation
+    c.setFont("Helvetica", 24)
+    c.drawString(-440, 290, user_name)  # Update coordinates accordingly
+    c.restoreState()  # Restore the previous state of the canvas
+ 
+    # Add course name
+    c.saveState()  # Save the current state of the canvas
+    c.rotate(-90)  # Set the rotation angle to -90 degrees to counter the template rotation
+    c.setFont("Helvetica", 24)
+    c.drawString(-440, 360, currCourse.name)  # Update coordinates accordingly
+    c.restoreState()  # Restore the previous state of the canvas
+
+    # Add course dates
+    c.saveState()  # Save the current state of the canvas
+    c.rotate(-90)  # Set the rotation angle to -90 degrees to counter the template rotation
+    c.setFont("Helvetica", 16)
+    c.drawString(-360, 400, str(currCourse.start_date))  # Update coordinates accordingly
+    c.restoreState()  # Restore the previous state of the canvas
+
+    c.saveState()  # Save the current state of the canvas
+    c.rotate(-90)  # Set the rotation angle to -90 degrees to counter the template rotation
+    c.setFont("Helvetica", 16)
+    c.drawString(-490, 400, str(currCourse.end_date))  # Update coordinates accordingly
+    c.restoreState()  # Restore the previous state of the canvas
+
+    # Combine the new PDF with the certificate template
+    c.save()
+    buffer.seek(0)
+    new_pdf = PyPDF2.PdfReader(buffer)
+
+    output = io.BytesIO()
+    pdf_writer = PyPDF2.PdfWriter()
+
+    # Merge the two PDFs
+    page = template.pages[0]
+    page.merge_page(new_pdf.pages[0])
+    pdf_writer.add_page(page)
+
+    # Save the final PDF
+    pdf_writer.write(output)
+    output.seek(0)
+
+    # Return the PDF as a response
+    response = FileResponse(output, content_type='application/pdf')
+    response['Content-Disposition'] = f'inline; filename=certificate_{user_name}.pdf'
+
+    return response
