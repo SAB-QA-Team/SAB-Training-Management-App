@@ -2,46 +2,85 @@ $(document).ready(function() {
   // Check for saved language preference in cookie
   var language = getStorage("language");
   if (language) {
-    toggleLanguage(language);
+      toggleLanguage(language);
+  }
+
+  // Check for saved dark mode preference in cookie
+  var darkMode = getStorage("darkMode");
+  if (darkMode) {
+      toggleDarkMode(darkMode);
   }
 
   // Language toggle switch
   $("#language-checkbox").change(function() {
-    if ($(this).is(":checked")) {
-      toggleLanguage("arabic");
-    } else {
-      toggleLanguage("english");
-    }
+      if ($(this).is(":checked")) {
+          // $(".languages").fadeIn(200);
+          toggleLanguage("arabic");
+      } else {
+          //$(".languages").fadeOut(200);
+          toggleLanguage("english");
+      }
   });
 
-  // Function to toggle between English and Arabic languages
+  // Dark mode toggle switch
+  $("#dark-mode-checkbox").change(function() {
+      if ($(this).is(":checked")) {
+          toggleDarkMode("dark");
+      } else {
+          toggleDarkMode("light");
+      }
+  });
+
+
+  // Language dropdown menu
+  $(".languages a").click(function() {
+      var language = $(this).attr("data-language");
+      toggleLanguage(language);
+      $(".languages").fadeOut(200);
+  });
+
+
   function toggleLanguage(language) {
-    setStorage("language", language, 365);
-
-    // Toggle language classes on elements
-    if (language == "arabic") {
-      $(".language-toggle").addClass("language-arabic");
-    } else {
-      $(".language-toggle").removeClass("language-arabic");
-    }
-
-    // Toggle display of English and Arabic elements
-    $("p.english").toggle(language == "english");
-    $("p.arabic").toggle(language == "arabic");
-    $("a.english").toggle(language == "english");
-    $("a.arabic").toggle(language == "arabic");
-    $("form.english").toggle(language == "english");
-    $("form.arabic").toggle(language == "arabic");
+      setStorage("language", language, 365);
+      if (language == "arabic") {
+          $(".language-toggle").addClass("language-arabic");
+      } else {
+          $(".language-toggle").removeClass("language-arabic");
+      }
+      $("div.english").toggle(language == "english");
+      $("div.arabic").toggle(language == "arabic");
+      $(".english").toggle(language == "english");
+      $(".arabic").toggle(language == "arabic");
+      $("h1.english").toggle(language == "english");
+      $("h1.arabic").toggle(language == "arabic");
+      $("p.english").toggle(language == "english");
+      $("p.arabic").toggle(language == "arabic");
+      $("a.english").toggle(language == "english");
+      $("a.arabic").toggle(language == "arabic");
+      $("form.english").toggle(language == "english");
+      $("form.arabic").toggle(language == "arabic");
   }
 
-  // Function that sets a value in local storage
+
+  function toggleDarkMode(mode) {
+      if (mode == "dark") {
+          $("body").addClass("dark");
+          $(".dark-mode-icon").removeClass("fa-moon").addClass("fa-sun");
+      } else {
+          $("body").removeClass("dark");
+          $(".dark-mode-icon").removeClass("fa-sun").addClass("fa-moon");
+      }
+      setStorage("darkMode", mode, 365);
+  }
+
+  // Set a value in local storage
   function setStorage(name, value) {
-    localStorage.setItem(name, JSON.stringify(value));
+      localStorage.setItem(name, JSON.stringify(value));
   }
 
-  // Function to get a value from local storage
+  // Get a value from local storage
   function getStorage(name) {
-    var value = localStorage.getItem(name);
-    return value && JSON.parse(value);
+      var value = localStorage.getItem(name);
+      return value && JSON.parse(value);
   }
 });

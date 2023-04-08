@@ -229,3 +229,4 @@ def generate_certificate(request, course_id):
     response['Content-Disposition'] = f'inline; filename=certificate_{user_name}.pdf'
 
     return response
+

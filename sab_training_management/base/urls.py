@@ -50,6 +50,7 @@ urlpatterns = [
     path('course_list/<int:course_id>/', course_details, name='course-details'),
     path('register_course/<int:course_id>/', register_course, name='register-course'),
     path('my-courses/', trainee_courses, name="my-courses"),
+    path('generate-certificate/<int:course_id>/', generate_certificate, name='generate-certificate'),
     path('attendance-delete/<int:course_id>/', drop_course, name="drop-course"),
     path('enter-class/<int:course_id>/', enter_class, name="enter-class"),
     path('exit-class/<int:course_id>/', exist_class, name="exit-class"),
