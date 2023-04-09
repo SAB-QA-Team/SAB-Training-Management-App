@@ -22,36 +22,6 @@
     </div>
   </div>
 
-<style>
-table {
-  border-collapse: collapse;
-  border: 10px solid #A29475;
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border-bottom: 1px solid #A29475;
-}
-
-th {
-  background-color: lightgray;
-  border-bottom: 10px solid #A29475;
-}
-
-.link {
-  color: #FFFFFF;
-  text-decoration: none;
-  text-transform: capitalize;
-  font-weight: bold;
-}
-
-</style>
-</head>
-<body>
-
-
-<div class="english container">
   <script>
     window.onload = function () {
     
@@ -91,6 +61,36 @@ th {
      
     }
     </script>
+<style>
+table {
+  border-collapse: collapse;
+  border: 10px solid #A29475;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #A29475;
+}
+
+th {
+  background-color: lightgray;
+  border-bottom: 10px solid #A29475;
+}
+
+.link {
+  color: #FFFFFF;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="english container">
   <div class="row">
     <div class="col-md-6">
       <div id="chartContainer" style="height: 370px;"></div>
@@ -122,45 +122,6 @@ th {
 </div>
 
 <div class="arabic container">
-  <script>
-    window.onload = function () {
-    
-    var chart = new CanvasJS.Chart("chartContainer", {
-      theme: "light2",
-      animationEnabled: true,
-      title: {
-        text: "Employee Training Stats"
-      },
-      subtitles: [{
-        text: "",
-        fontSize: 16
-      }],
-      data: [{
-        type: "pie",
-        indexLabelFontSize: 12,
-        radius: 80,
-        indexLabel: "{label} - {y}",
-        yValueFormatString: "###0.0\"%\"",
-        click: explodePie,
-        dataPoints: [
-          { y: 35, label: "Completed Training" },
-          { y: 25, label: "Failed Training"},
-          { y: 25, label: "Ongoing Training" },
-          { y: 15, label: "Pending Training" }
-        ]
-      }]
-    });
-    chart.render();
-    
-    function explodePie(e) {
-      for(var i = 0; i < e.dataSeries.dataPoints.length; i++) {
-        if(i !== e.dataPointIndex)
-          e.dataSeries.dataPoints[i].exploded = false;
-      }
-    }
-     
-    }
-    </script>
   <div class="row">
     <div class="col-md-6">
       <div id="chartContainer" style="height: 370px;"></div>
