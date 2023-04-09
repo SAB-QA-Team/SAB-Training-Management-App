@@ -5,6 +5,53 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+
+  <div class="header">
+    <div class="logo">
+      <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
+    </div>
+    <div class="toggles">
+      <div class="language-toggle">
+        <label class="toggle-label" for="language-checkbox">
+          <i class="fas fa-globe language-icon"></i>
+        </label>
+        <input type="checkbox" id="language-checkbox">
+        <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user}} </a> </span>
+        <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+      </div>
+    </div>
+  </div>
+
+<style>
+table {
+  border-collapse: collapse;
+  border: 10px solid #A29475;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #A29475;
+}
+
+th {
+  background-color: lightgray;
+  border-bottom: 10px solid #A29475;
+}
+
+.link {
+  color: #FFFFFF;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="english container">
   <script>
     window.onload = function () {
     
@@ -44,52 +91,6 @@
      
     }
     </script>
-<style>
-table {
-  border-collapse: collapse;
-  border: 10px solid #A29475;
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border-bottom: 1px solid #A29475;
-}
-
-th {
-  background-color: lightgray;
-  border-bottom: 10px solid #A29475;
-}
-
-.link {
-  color: #FFFFFF;
-  text-decoration: none;
-  text-transform: capitalize;
-  font-weight: bold;
-}
-
-</style>
-</head>
-<body>
-
-  <div class="header">
-    <div class="logo">
-      <img src="{% static 'img/primary-rgb-state-audit-bureau-1@2x.png' %}" alt="Logo">
-    </div>
-    <div class="toggles">
-      <div class="language-toggle">
-        <label class="toggle-label" for="language-checkbox">
-          <i class="fas fa-globe language-icon"></i>
-        </label>
-        <input type="checkbox" id="language-checkbox">
-        <span class="hello-msg">Welcome, {{request.user.get_name}} </a> </span>
-        <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
-      </div>
-    </div>
-  </div>
-
-
-<div class="container">
   <div class="row">
     <div class="col-md-6">
       <div id="chartContainer" style="height: 370px;"></div>
@@ -112,14 +113,88 @@ th {
             
             </tr>
             {%empty%}
-            <h3>No courses</h3>
+            <h3 style="color: black;">No trainees</h3>
             {% endfor %}
         </table>
 
     </div>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<div class="arabic container">
+  <script>
+    window.onload = function () {
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+      theme: "light2",
+      animationEnabled: true,
+      title: {
+        text: "Employee Training Stats"
+      },
+      subtitles: [{
+        text: "",
+        fontSize: 16
+      }],
+      data: [{
+        type: "pie",
+        indexLabelFontSize: 12,
+        radius: 80,
+        indexLabel: "{label} - {y}",
+        yValueFormatString: "###0.0\"%\"",
+        click: explodePie,
+        dataPoints: [
+          { y: 35, label: "Completed Training" },
+          { y: 25, label: "Failed Training"},
+          { y: 25, label: "Ongoing Training" },
+          { y: 15, label: "Pending Training" }
+        ]
+      }]
+    });
+    chart.render();
+    
+    function explodePie(e) {
+      for(var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+        if(i !== e.dataPointIndex)
+          e.dataSeries.dataPoints[i].exploded = false;
+      }
+    }
+     
+    }
+    </script>
+  <div class="row">
+    <div class="col-md-6">
+      <div id="chartContainer" style="height: 370px;"></div>
+    </div>
+    <div class="col-md-6">
+        <h1>موظفيني</h1>
+
+        <table>
+            <tr>
+                <th>الموظف</th>
+                <th></th>
+                <th></th>
+        
+            </tr>
+            {% for trainee in trainees %}
+            <tr>
+                <td>{{trainee}}</td>
+                <td><a href="{% url 'trainee' trainee.id %}">تفاصيل الموظف</a></td>
+                <td><a href="{% url 'trainee-courses' trainee_id=trainee.id %}">تفاصيل دورات الموظف</a></td>
+            
+            </tr>
+            {%empty%}
+            <h3 style="color: black;">لا يوجد موظفين</h3>
+            {% endfor %}
+        </table>
+
+    </div>
+  </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/language_script.js' %}"></script>
+
 </body>
 </html>

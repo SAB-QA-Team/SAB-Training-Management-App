@@ -52,7 +52,7 @@ th {
   </div>
 
 
-<div class="container">
+<div class="english container">
   <div class="row">
     <div class="col-md-8">
         <h1> Trainee: {{trainee}} </h1>
@@ -131,5 +131,88 @@ th {
   </div>
 </div>
 </div>
+
+<div class="arabic container">
+  <div class="row">
+    <div class="col-md-8">
+        <h1> الدورات التدريبية للموظف: {{trainee}} </h1>
+        
+        <h3> الدورات الجارية</h3>
+        <table>
+            <tr>
+              <th>اسم الدورة</th>
+              <th>الحضور</th>
+                <th></th>
+
+            </tr>
+            {% for traineeCourse in traineeCourses %}
+            {% if current_date < traineeCourse.course.end_date %}
+            <tr>
+                <td>{{traineeCourse.course}}</td>
+                <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+                <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">التفاصيل</a></td>
+
+            </tr>
+            {% endif %}
+            {%empty%}
+            <h4>لا توجد دورات جارية</h4>
+            {% endfor %}
+        </table>
+
+        <br>
+        <h3> الدورات المكتملة</h3>
+        <table>
+            <tr>
+                <th>اسم الدورة</th>
+                <th>الحضور</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+            {% for traineeCourse in traineeCourses %}
+            {% if current_date >= traineeCourse.course.end_date and traineeCourse.classes_attended|divide:traineeCourse.course.number_of_classes  >= 0.9 %}
+            <tr>
+                <td>{{traineeCourse.course}}</td>
+                <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+                <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">التفاصيل</a></td>
+                <td><a href="">الاطلاع على الشهادة</a></td>
+
+            </tr>
+            {% endif %}
+            {%empty%}
+            <h4>لا توجد دورات مكتملة</h4>
+            {% endfor %}
+        </table>
+
+        <br>
+        <h3> الدورات الغير مكتملة</h3>
+        <table>
+            <tr>
+                <th>اسم الدورة</th>
+                <th>الحضور</th>
+                <th></th>
+
+    </tr>
+    {% for traineeCourse in traineeCourses %}
+    {% if current_date >= traineeCourse.course.end_date and traineeCourse.classes_attended|divide:traineeCourse.course.number_of_classes < 0.9 %}
+    <tr>
+        <td>{{traineeCourse.course}}</td>
+        <td>{{traineeCourse.classes_attended}} / {{traineeCourse.course.number_of_classes}}</td>
+        <td><a href="{% url 'course-details' course_id=traineeCourse.course.id%}">التفاصيل</a></td>
+
+            </tr>
+            {% endif %}
+            {%empty%}
+            <h4>لا توجد دورات  غير مكتملة</h4>
+            {% endfor %}
+        </table>
+
+    </div>
+  </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/language_script.js' %}"></script>
 </body>
 </html>
