@@ -12,7 +12,7 @@ pip install django
 
 3. Clone this repository:
 
-git clone https://github.com/yourusername/your-django-project.git
+git clone https://github.com/SAB-QA-Team/SAB-Training-Management-App.git
 
 4. Navigate to the project directory:
 
