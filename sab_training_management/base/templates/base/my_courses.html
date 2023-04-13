@@ -22,12 +22,13 @@
     </div>
   </div>
 
-  <nav class=" english navbar navbar-expand-lg navbar-custom">
+  
+  <nav class="english navbar navbar-expand-lg navbar-custom">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div class="english collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav">
    
       <ul class="navbar-nav">
         
@@ -51,35 +52,37 @@
     <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
    
   </nav>
-  <nav class="arabic navbar navbar-expand-lg navbar-custom">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarNav">
-   
-      <ul class="navbar-nav">
-        
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'courses-list' %}">الدورات التدريبية المطروحة</a>
-        </li>
-        {% if request.user.is_trainee %}
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'my-courses' %}">دوراتي التدريبية</a>
-        </li>
+</div>
+
+<nav class="arabic navbar navbar-expand-lg navbar-custom">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+ 
+    <ul class="navbar-nav">
       
-        {% endif %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">اتصل بنا</a>
-        </li>
-      </ul>
-    </div>
-   
-    <span class="hello-msg">اهلاً, <a href="{% url 'profile' %}"> {{request.user.get_name}} </a> </span>
-    <span ><a  class="hello-msg" href="{% url 'logout' %}">تسجيل الخروج</a></span>
-   
-  </nav>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'courses-list' %}">Courses List</a>
+      </li>
+      {% if request.user.is_trainee %}
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'my-courses' %}">My Courses</a>
+      </li>
+    
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+ 
+  <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user.get_name}} </a> </span>
+  <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+ 
+</nav>
 </div>
 
 <br> 
@@ -169,7 +172,7 @@
 <div class="container">
   <div class="container row">
       <div class="col-lg-10">
-          <h3>دوراتي التدريبية:</h3>
+          <h3>دوراتي التريبية:</h3>
           <div class="card card-body" style="width:1000px">
             <h3 style="color:black"> الدورات الجارية</h3>
             <table class="table table-sm">
@@ -283,7 +286,6 @@
     .nav-link {
       color: #fff;
     }
-    
   
   </style>
 

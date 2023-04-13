@@ -92,7 +92,7 @@ label,
 input,
 select,
 textarea {
-    color: #A29475 !important; /* Set text color to a light brown */
+    color: black !important; /* Set text color to black */
 }
 
 /* Style the primary button */
@@ -100,3 +100,4 @@ textarea {
     background-color: #A29475 !important; 
     border-color: #A29475 !important; 
 }
+
