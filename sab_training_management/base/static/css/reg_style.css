@@ -36,12 +36,11 @@ body {
 
 /* Style the toggle labels */
 .toggle-label {
-    color: darkgray; 
+    color: white; 
     display: inline-block; 
     width: 30px; 
     height: 30px; 
     border-radius: 50%; 
-    background-color: #000; 
     cursor: pointer; 
     position: relative; 
     margin-right: 10px; 
@@ -100,4 +99,3 @@ textarea {
     background-color: #A29475 !important; 
     border-color: #A29475 !important; 
 }
-

@@ -5,12 +5,6 @@ $(document).ready(function() {
       toggleLanguage(language);
   }
 
-  // Check for saved dark mode preference in cookie
-  var darkMode = getStorage("darkMode");
-  if (darkMode) {
-      toggleDarkMode(darkMode);
-  }
-
   // Language toggle switch
   $("#language-checkbox").change(function() {
       if ($(this).is(":checked")) {
@@ -21,16 +15,6 @@ $(document).ready(function() {
           toggleLanguage("english");
       }
   });
-
-  // Dark mode toggle switch
-  $("#dark-mode-checkbox").change(function() {
-      if ($(this).is(":checked")) {
-          toggleDarkMode("dark");
-      } else {
-          toggleDarkMode("light");
-      }
-  });
-
 
   // Language dropdown menu
   $(".languages a").click(function() {
@@ -59,18 +43,6 @@ $(document).ready(function() {
       $("a.arabic").toggle(language == "arabic");
       $("form.english").toggle(language == "english");
       $("form.arabic").toggle(language == "arabic");
-  }
-
-
-  function toggleDarkMode(mode) {
-      if (mode == "dark") {
-          $("body").addClass("dark");
-          $(".dark-mode-icon").removeClass("fa-moon").addClass("fa-sun");
-      } else {
-          $("body").removeClass("dark");
-          $(".dark-mode-icon").removeClass("fa-sun").addClass("fa-moon");
-      }
-      setStorage("darkMode", mode, 365);
   }
 
   // Set a value in local storage
