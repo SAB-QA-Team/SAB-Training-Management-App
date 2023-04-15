@@ -16,7 +16,7 @@
           <i class="fas fa-globe language-icon"></i>
         </label>
         <input type="checkbox" id="language-checkbox">
-        <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user}} </a> </span>
+        <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user.get_name}} </a> </span>
         <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
       </div>
     </div>
@@ -151,3 +151,38 @@ th {
 
 </body>
 </html>
+
+<style>
+  /* Style the primary button */
+  .btn-primary {
+      background-color: #A29475 !important; 
+      border-color: #A29475 !important; 
+  }
+
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+
+  a:link {
+  color: #fff;
+  }
+
+  a:hover {
+  color: #8A1738;
+  }
+
+  .active {
+    background-color: #A29475;
+  }
+
+  .navbar-custom {
+    background-color: #A29475;
+  }
+
+  .nav-link {
+    color: #fff;
+  }
+
+</style>
