@@ -105,36 +105,47 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
-                    <label for="qid" class="form-label">QID <span class="text-danger">*</span>
+                    <label for="{{ form.username.id_for_label }}" class="form-label">رقم البطاقة الشخصية <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" id="qid" placeholder="ادخل الرقم الوطني" required pattern="[0-9]+">
+                    <input type="text" class="form-control" id="{{ form.username.auto_id }}" name="{{ form.username.html_name }}" placeholder="ادخل رقم البطاقة الشخصية" required>
+                    {% if form.username.errors %}
+                        <div class="error">{{ form.username.errors }}</div>
+                    {% endif %}
                 </div>
+
                 <div class="mb-3">
-                    <label for="first-name" class="form-label">الاسم  <span class="text-danger">*</span>
+                    <label for="{{ form.first_name.id_for_label }}" class="form-label">الاسم<span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" id="first-name" placeholder="ادخل الاسم " required>
+                    <input type="text" class="form-control" id="{{ form.first_name.auto_id }}" name="{{ form.first_name.html_name }}" placeholder="ادخل الاسم" required>
+                    {% if form.first_name.errors %}
+                        <div class="error">{{ form.first_name.errors }}</div>
+                    {% endif %}
                 </div>
+
                 <div class="mb-3">
                     <label for="last-name" class="form-label">اسم العائلة <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" id="last-name" placeholder="ادخل اسم العائلة" required>
+                    <input type="text" class="form-control" id="last-name"  name="last_name" placeholder="ادخل اسم العائلة" required>
                 </div>
+
                 <div class="mb-3">
                     <label for="email" class="form-label">البريد الالكتروني <span class="text-danger">*</span>
                     </label>
-                    <input type="email" class="form-control" id="email" placeholder="ادخل البريد الالكتروني" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="ادخل البريد الالكتروني" required>
                 </div>
+                
                 <div class="mb-3">
                     <label for="phone" class="form-label">رقم الهاتف <span class="text-danger">*</span>
                     </label>
-                    <input type="tel" class="form-control" id="phone" placeholder="ادخل رقم الهاتف" required>
+                    <input type="tel" class="form-control" id="phone" name="phone"  placeholder="ادخل رقم الهاتف" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="organization" class="form-label">المؤسسة / الشركة <span class="text-danger">*</span>
                     </label>
-                    <select class="form-select" id="organization" required>
+                    <select class="form-select" id="organization" name="organization" required>
                         <option selected disabled value="">اختر المؤسسة ...</option>
                         <option value="Ministry of Interior">وزارة الداخلية</option>
                         <option value="Ministry of Communication and Information Technology">وزارة الاتصالات وتكنلوجيا المعلومات</option>
@@ -142,30 +153,35 @@
                         <option value="Ministry of Culture">وزارة الثقافة</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="job-title" class="form-label">المسمى الوظيفي <span class="text-danger">*</span>
                     </label>
-                    <select class="form-select" id="job-title" required>
+                    <select class="form-select" id="job-title" name="job" required>
                         <option selected disabled value="">اختر المسمى الوظيفي...</option>
-                        <<option value="Accountant">محاسب</option>
+                        <option value="Accountant">محاسب</option>
                         <option value="Auditor">مدقق حسابات</option>
                         <option value="Financial Analyst">محلل مالي</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="address" class="form-label">العنوان</label><span class="text-danger">*</span>
-                    <textarea class="form-control" id="address" placeholder="أدخل العنوان"></textarea>
+                    <textarea class="form-control" id="address" name="address" placeholder="أدخل العنوان"></textarea>
                 </div>
+
                 <div class="mb-3">
                     <label for="password" class="form-label">كلمة السر <span class="text-danger">*</span>
                     </label>
-                    <input type="password" class="form-control" id="password" placeholder="أدخل كلمة السر" required>
+                    <input type="password" class="form-control" id="password" name="password1" placeholder="أدخل كلمة السر" required>
                 </div>
+
                 <div class="mb-3">
                     <label for="confirm-password" class="form-label">تأكيد كلمة السر <span class="text-danger">*</span>
                     </label>
-                    <input type="password" class="form-control" id="confirm-password" placeholder="تأكيد كلمة السر" required>
+                    <input type="password" class="form-control" id="confirm-password" name="password2" placeholder="تأكيد كلمة السر" required>
                 </div>
+
                 <button type="submit" class="btn btn-primary">التسجيل</button>
                 <div class="mt-3">لديك حساب؟ <a href="/login">تسجيل الدخول هنا</a>
                 </div>

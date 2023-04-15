@@ -14,7 +14,32 @@
     
 
     <nav class="navbar navbar-expand-lg navbar-custom">
-        <span class="hello-msg">Welcome, {{request.user.get_name}} </a> </span>
-        <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+      <span class="hello-msg">Welcome, <a href="{% url 'profile' %}"> {{request.user.get_name}} </a> </span>
+      <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
     </nav>
 </div>
+
+<style>
+
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+
+  a:link {
+  color: #fff;
+  }
+
+  a:hover {
+  color: #8A1738;
+  }
+
+  .nav-link {
+    color: #fff;
+  }
+  
+  .p{
+    color:black;
+  }
+</style>
